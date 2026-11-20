@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>VICE TIDE — cover shot</title>
+<style>
+  @font-face { font-family: 'Oswald'; src: url('../app/fonts/Oswald.ttf') format('truetype'); font-weight: 100 900; }
+  @font-face { font-family: 'Pacifico'; src: url('../app/fonts/Pacifico.ttf') format('truetype'); }
+  html, body { margin: 0; padding: 0; background: #160a2e; }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<canvas id="shot" width="1280" height="720"></canvas>
+<script src="../app/src/cover.js"></script>
+<script>
+  var state = window.ViceTide.defaultState();
+  var canvas = document.getElementById('shot');
+  function draw() {
+    window.ViceTide.drawCover(canvas, state, 'rush', '../app/').then(function () {
+      document.title = 'ready';
+    });
+  }
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(draw); } else { draw(); }
+  draw();
+</script>
+</body>
+</html>
